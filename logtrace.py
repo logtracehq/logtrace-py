@@ -81,12 +81,10 @@ class Logtrace:
 
     Args:
         api_key: Your Logtrace API key.
-        base_url: Override the default API base URL.
     """
 
-    def __init__(self, api_key: str, *, base_url: str = DEFAULT_BASE_URL):
+    def __init__(self, api_key: str):
         self._api_key = api_key
-        self._base_url = base_url
 
     def create_event(self, req: CreateEventRequest) -> APIResponse:
         """Send an event to Logtrace."""
@@ -105,7 +103,7 @@ class Logtrace:
         data = json.dumps(payload).encode("utf-8")
 
         req = urllib.request.Request(
-            f"{self._base_url}{path}",
+            f"{DEFAULT_BASE_URL}{path}",
             data=data,
             method="POST",
             headers={
