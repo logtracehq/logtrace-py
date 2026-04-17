@@ -26,6 +26,7 @@ class CreateEventRequest:
     http_endpoint: Optional[str] = None
     type: Optional[str] = None
     geo_ip_location: Optional[str] = None
+    metadata: Optional[dict] = None
 
 
 @dataclass
@@ -33,19 +34,14 @@ class CreateSessionRequest:
     login_at: str
     """RFC 3339 timestamp, e.g. '2024-01-15T10:30:00Z'"""
     status: str
-    """Must be 'ACTIVE' or 'INACTIVE'"""
+    """Must be 'ACTIVE', 'INACTIVE', 'SUCCESSFUL', 'FAILED', or 'EXPIRED'"""
     user_id: Optional[str] = None
     username: Optional[str] = None
     device_info: Optional[str] = None
     ip_address: Optional[str] = None
     location: Optional[str] = None
-
-
-@dataclass
-class AuditLogMetadata:
-    event: Optional[str] = None
-    type: Optional[str] = None
-    description: Optional[str] = None
+    token: Optional[str] = None
+    metadata: Optional[dict] = None
 
 
 @dataclass
@@ -57,7 +53,7 @@ class CreateAuditLogRequest:
     username: Optional[str] = None
     ip_address: Optional[str] = None
     request_id: Optional[str] = None
-    metadata: Optional[AuditLogMetadata] = None
+    metadata: Optional[dict] = None
 
 
 @dataclass
