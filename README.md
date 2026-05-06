@@ -52,8 +52,3 @@ client.create_audit_log(CreateAuditLogRequest(
 ))
 ```
 
-## Custom Base URL
-
-```python
-client = Logtrace("your-api-key", base_url="https://your-instance.com/v1/developers")
-```
