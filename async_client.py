@@ -37,13 +37,11 @@ class AsyncClient:
     def __init__(
         self,
         api_key: str,
-        base_url: str = _DEFAULT_BASE_URL,
         timeout: float = _DEFAULT_TIMEOUT,
     ) -> None:
         if not api_key:
             raise ValueError("logtrace: API key is required")
         self._api_key  = api_key
-        self._base_url = base_url.rstrip("/")
         self._timeout  = timeout
 
     async def __aenter__(self) -> AsyncClient:
@@ -67,7 +65,7 @@ class AsyncClient:
     async def _post(self, path: str, body: dict[str, Any]) -> ApiResponse:
         from urllib.parse import urlparse
 
-        url     = self._base_url + path
+        url     = _DEFAULT_BASE_URL + path
         payload = json.dumps(body).encode()
         parsed  = urlparse(url)
 
