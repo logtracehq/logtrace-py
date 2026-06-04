@@ -88,13 +88,3 @@ try:
 except LogtraceError as e:
     print(e.status_code, e)
 ```
-
-## Options
-
-```python
-Client(
-    api_key="...",
-    base_url="https://api.logtrace.dev/v1/developers",  # default: http://localhost:8080/v1/developers
-    timeout=5.0,                                         # default: 10.0
-)
-```
