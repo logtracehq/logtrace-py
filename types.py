@@ -39,7 +39,7 @@ class RequestDetails:
 
 @dataclass
 class CreateEventRequest:
-    action_name: str
+    name: str
     http_method: str
     http_status: int
     client_ip: str
@@ -54,7 +54,7 @@ class CreateEventRequest:
 
     def to_dict(self) -> dict[str, Any]:
         data: dict[str, Any] = {
-            "action_name":        self.action_name,
+            "name":        self.name,
             "http_method":        self.http_method,
             "http_status":        self.http_status,
             "client_ip":          self.client_ip,
@@ -101,7 +101,7 @@ class CreateSessionRequest:
 
 @dataclass
 class CreateAuditLogRequest:
-    action: str
+    name: str
     timestamp: str
     user_id: str = ""
     user_name: str = ""
@@ -112,7 +112,7 @@ class CreateAuditLogRequest:
 
     def to_dict(self) -> dict[str, Any]:
         data: dict[str, Any] = {
-            "action":    self.action,
+            "name":    self.name,
             "timestamp": self.timestamp,
         }
         if self.user_id:    data["user_id"]    = self.user_id

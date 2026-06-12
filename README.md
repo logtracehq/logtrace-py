@@ -16,7 +16,7 @@ from logtrace_py import Client, CreateEventRequest
 client = Client(api_key=os.environ["LOGTRACE_API_KEY"])
 
 client.create_event(CreateEventRequest(
-    action_name="user.signup",
+    name="user.signup",
     http_method="POST",
     http_status=201,
     client_ip="203.0.113.42",
